@@ -29,8 +29,8 @@ let download (config : Configuration) : string =
 
   let app   msg = sb.AppendLine   (msg : string)                            |> ignore
   let line  ()  = app "// ----------------------------------------------------------------"
-  let inf   msg = sb.AppendFormat ("// @@@ - INFO : {0}\n", (msg: string))  |> ignore
-  let err   msg = sb.AppendFormat ("// @@@ - ERROR: {0}\n", (msg: string))  |> ignore
+  let inf   msg = sb.AppendFormat ("// @@@ INFO : {0}\n", (msg: string))  |> ignore
+  let err   msg = sb.AppendFormat ("// @@@ ERROR: {0}\n", (msg: string))  |> ignore
   let inff  fmt = kprintf inf fmt
   let errf  fmt = kprintf err fmt
 
@@ -64,8 +64,7 @@ let download (config : Configuration) : string =
         app line
         loop ()
     loop ()
-
-  line ()
+    line ()
 
   sb.ToString ()
 

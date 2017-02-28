@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Trace.fs" />
+    <Compile Include="Numerical.fs" />
+    <Compile Include="Disposable.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
