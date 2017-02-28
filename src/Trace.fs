@@ -14,24 +14,25 @@
 
 namespace FsInclude
 
-[<RequireQualifiedAccess>]
-type internal TraceLevel =
-  | Success     = 0x10
-  | Highlight   = 0x08
-  | Info        = 0x04
-  | Warning     = 0x02
-  | Error       = 0x01
-
 module internal Trace =
+  [<RequireQualifiedAccess>]
+  type TraceLevel =
+    | Success     = 0x10
+    | Highlight   = 0x08
+    | Info        = 0x04
+    | Warning     = 0x02
+    | Error       = 0x01
+
   open FSharp.Core.Printf
   open System
   open System.Text
 
-  let mutable traceMask = 0x10 // All
+  let mutable traceMask = 0xFFFFFFFF // All
 
   module Tracer =
-    type internal ITracer =
+    type ITracer =
       interface
+        // TODO: Add delayed trace
         abstract Trace        : TraceLevel*string -> unit
       end
 
@@ -94,4 +95,3 @@ module internal Trace =
   let infof       fmt = kprintf info      fmt
   let warningf    fmt = kprintf warning   fmt
   let errorf      fmt = kprintf error     fmt
-
